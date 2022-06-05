@@ -1,0 +1,74 @@
+/**
+* ! CSS Variables
+**/
+:root {
+  --primary-color: #22181c;
+  --secondary-color: #f13030;
+  --white: #f6e8ea;
+  --dark: #22181c;
+}
+
+/**
+* ! Changing Default Browser Styling
+**/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+/**
+* ! Header Style Rules
+**/
+header {
+  background-color: #22181c;
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 5%;
+}
+
+header .cart {
+  display: flex;
+  position: relative;
+  gap: 0.5rem;
+  background-color: white;
+  color: var(--dark);
+  padding: 0.35rem;
+  font-size: 1.5rem;
+  border-radius: 0.35rem;
+}
+
+header .cart .cart-amount {
+  position: absolute;
+  top: -0.95rem;
+  right: -0.5rem;
+
+  padding: 0.2rem;
+  font-size: 0.9rem;
+  background-color: red;
+  color: var(--white);
+  border-radius: 0.25rem;
+}
+
+/**
+* ! Header Style Rules
+**/
