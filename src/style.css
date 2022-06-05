@@ -100,13 +100,32 @@ header .cart .cart-amount {
 .shop .price-quantity {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .shop .price-quantity .buttons {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .shop .price-quantity .buttons i {
   font-size: 1.2rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.shop .price-quantity .buttons i:first-child {
+  color: red;
+}
+
+.shop .price-quantity .buttons i:last-child {
+  color: green;
+}
+
+@media (max-width: 500px) {
+  .shop {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
 }
