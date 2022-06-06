@@ -150,4 +150,10 @@ let update = (id) => {
   let search = basket.find((x) => x.id === id);
   // document.querySelector(`#${id}`).innerHTML = search.item;
   document.getElementById(id).innerHTML = search.item;
+  calculation();
+};
+
+let calculation = () => {
+  let cartIcon = document.querySelector('.cart-amount');
+  cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
 };
