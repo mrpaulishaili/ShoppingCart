@@ -89,21 +89,23 @@ let shopItemsData = [
   },
 ];
 
+let basket = [];
+
 let generateShop = () => {
   return (shop.innerHTML = shopItemsData
-    .map((x) => {
+    .map(({ id, img, name, desc, price }) => {
       return `
-  <div class="product">
-    <img src=${x.img} alt="" />
+  <div class="product" id=product-id-${id}>
+    <img src=${img} alt="" />
     <div class="details">
-        <h3>${x.name}</h3>
-        <p>${x.desc}</p>
+        <h3>${name}</h3>
+        <p>${desc}</p>
         <div class="price-quantity">
-        <h3>$${x.price}</h3>
+        <h3>$${price}</h3>
         <div class="buttons">
-            <i class="bi bi-dash"></i>
-            <div class="quantity">10</div>
-            <i class="bi bi-plus"></i>
+            <i class="bi bi-dash" onclick="decrement(${id})"></i>
+            <div id=${id} class="quantity">10</div>
+            <i class="bi bi-plus" onclick="increment(${id})"></i>
         </div>
         </div>
     </div>
@@ -114,3 +116,38 @@ let generateShop = () => {
 };
 
 generateShop();
+
+let increment = (id) => {
+  let selectedItem = id;
+  let search = basket.find((x) => x.id === selectedItem.id);
+
+  if (search === undefined) {
+    basket.push({
+      id: selectedItem.id,
+      item: 1,
+    });
+  } else {
+    search.item += 1;
+  }
+
+  update(selectedItem.id);
+};
+
+let decrement = (id) => {
+  let selectedItem = id;
+  let search = basket.find((x) => x.id === selectedItem.id);
+
+  if (search === undefined) return;
+  if (search.item === 0) return;
+  else {
+    search.item -= 1;
+  }
+
+  update(selectedItem.id);
+};
+
+let update = (id) => {
+  let search = basket.find((x) => x.id === id);
+  // document.querySelector(`#${id}`).innerHTML = search.item;
+  document.getElementById(id).innerHTML = search.item;
+};
